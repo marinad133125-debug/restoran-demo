@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Брусника · ресторан северной кухни в Санкт-Петербурге</title>
+<meta name="description" content="Брусника: ресторан северной кухни на Петроградской стороне. Меню с ценами, счастливые часы, афиша вечеров, банкеты и бронь стола за минуту.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Брусника · ресторан северной кухни">
+<meta property="og:description" content="Меню с ценами, счастливые часы, афиша и бронь стола за минуту.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-m.webp" media="(max-width: 860px)">
+<link rel="preload" as="image" href="assets/hero.webp" media="(min-width: 861px)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Брусника","servesCuisine":"Северная кухня","telephone":"+7 900 000-00-00","address":{"@type":"PostalAddress","streetAddress":"Каменноостровский пр., 10","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"openingHours":"Mo-Su 12:00-23:00","priceRange":"₽₽"}
+</script>
+<style>
+:root{--night:#17222D;--night2:#1F2D3A;--birch:#F1EFEA;--berry:#9E2A49;--amber:#E2A64A;--mist:#B9C4CE;--ink:#14191F}
+*{box-sizing:border-box;margin:0}
+img{max-width:100%;height:auto}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--birch);font:400 1.0625rem/1.65 Onest,system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+h1,h2,h3{font-family:Forum,serif;font-weight:400;line-height:1.08}
+h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:92px 0}
+.btn{display:inline-block;background:var(--amber);color:var(--ink);text-decoration:none;font-weight:700;padding:.95em 1.6em;border-radius:999px;border:0;font-size:1rem;cursor:pointer}
+.btn:hover{background:#efba68}
+.btn.ghost{background:transparent;color:var(--birch);border:2px solid var(--birch)}
+.btn.ghost:hover{background:var(--birch);color:var(--ink)}
+
+/* шапка */
+.bar{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px max(20px,calc((100% - 1120px)/2));background:linear-gradient(to bottom,rgba(23,34,45,.92),rgba(23,34,45,0))}
+.logo{font-family:Forum;font-size:1.7rem;text-decoration:none;letter-spacing:.02em}
+.bar nav{display:flex;gap:26px;font-size:.98rem}
+.bar nav a{text-decoration:none;color:var(--mist)}
+.bar nav a:hover{color:var(--birch)}
+.bar .btn{padding:.6em 1.2em;font-size:.95rem}
+
+/* первый экран */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,34,45,.95) 8%,rgba(23,34,45,.15) 55%,rgba(23,34,45,.4))}
+.hero .wrap{position:relative;z-index:2;padding:0 0 84px}
+.hero h1{font-size:clamp(3.2rem,9vw,7.4rem);margin-bottom:.12em}
+.hero p{font-size:1.25rem;max-width:34ch;color:#dfe5ea;margin-bottom:28px}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap}
+.hero .info{margin-top:28px;color:var(--mist);font-size:.98rem}
+
+/* меню */
+.menu{background:var(--birch);color:var(--ink)}
+.menu h2{margin-bottom:.4em}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.tabs button{font:inherit;font-weight:500;padding:.6em 1.2em;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--birch)}
+.panel{display:none;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:20px}
+.panel.on{display:grid}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 18px;padding:16px 0;border-bottom:1px solid #cfcac0}
+.item b{font-family:Forum;font-size:1.45rem;font-weight:400}
+.item .p{font-weight:700;color:var(--berry)}
+.item span{grid-column:1/2;color:#4d555c;font-size:.97rem}
+.dishes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.dishes img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;display:block}
+
+/* счастливые часы */
+.happy{display:grid;grid-template-columns:1fr 1fr;min-height:480px;padding:0;background:var(--night2)}
+.happy img{width:100%;height:100%;object-fit:cover;display:block}
+.happy .txt{padding:72px max(28px,5vw);align-self:center}
+.times{list-style:none;padding:0;margin:26px 0}
+.times li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid rgba(241,239,234,.2)}
+.times b{font-weight:500;color:var(--amber)}
+
+/* афиша */
+.events .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;margin-top:36px;align-items:start}
+.events img{width:100%;border-radius:6px;display:block;aspect-ratio:3/2;object-fit:cover}
+.afisha{list-style:none;padding:0}
+.afisha li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid rgba(241,239,234,.2)}
+.afisha .d{font-family:Forum;font-size:2.4rem;line-height:1;color:var(--amber)}
+.afisha .d small{display:block;font-family:Onest;font-size:.85rem;color:var(--mist)}
+.afisha h3{font-size:1.5rem;margin-bottom:4px}
+.afisha p{color:var(--mist);font-size:.97rem}
+
+/* новости */
+.news{background:var(--night2)}
+.news .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:34px}
+.news article{border-top:3px solid var(--berry);padding-top:16px}
+.news time{font-size:.88rem;color:var(--mist)}
+.news h3{font-size:1.45rem;margin:.3em 0}
+.news p{color:var(--mist);font-size:.97rem}
+
+/* бронь и контакты */
+.book .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+form{display:grid;gap:14px;margin-top:22px}
+label{display:grid;gap:6px;font-weight:500}
+input,select{font:inherit;padding:.8em .9em;border-radius:6px;border:2px solid var(--mist);background:var(--night2);color:var(--birch)}
+.msg{font-size:.95rem;color:var(--mist)}
+.contacts p{margin-bottom:.5em}
+.tel{font-family:Forum;font-size:2.2rem;text-decoration:none}
+.map{margin-top:22px;border:2px dashed var(--mist);border-radius:6px;padding:26px;text-align:center;color:var(--mist);background:repeating-linear-gradient(45deg,transparent 0 12px,rgba(185,196,206,.06) 12px 24px)}
+footer{padding:26px 0;border-top:1px solid rgba(241,239,234,.15);color:var(--mist);font-size:.92rem}
+footer .wrap{display:flex;gap:14px 28px;flex-wrap:wrap;justify-content:space-between}
+
+@media (max-width:860px){
+  .bar nav{display:none}
+  section{padding:60px 0}
+  .panel.on,.dishes,.events .grid,.book .cols,.news .cols{grid-template-columns:1fr}
+  .happy{grid-template-columns:1fr}
+  .happy img{height:300px}
+  .happy .txt{padding:44px 20px}
+  .hero .wrap{padding-bottom:56px}
+  .afisha li{grid-template-columns:80px 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="logo" href="#">Брусника</a>
+  <nav aria-label="Разделы">
+    <a href="#menu">Меню</a><a href="#happy">Счастливые часы</a><a href="#afisha">Афиша</a><a href="#news">Новости</a><a href="#bron">Контакты</a>
+  </nav>
+  <a class="btn" href="#bron">Забронировать</a>
+</header>
+
+<main>
+<section class="hero">
+  <picture>
+    <source media="(max-width: 860px)" srcset="assets/hero-m.webp">
+    <img src="assets/hero.webp" alt="Зал ресторана «Брусника» вечером: длинный стол, тёплые лампы, арочное окно" fetchpriority="high">
+  </picture>
+  <div class="wrap">
+    <h1>Брусника</h1>
+    <p>Северная кухня на Петроградской стороне. Ужин при свечах, а по будням счастливые часы.</p>
+    <div class="row"><a class="btn" href="#bron">Забронировать стол</a><a class="btn ghost" href="#menu">Смотреть меню</a></div>
+    <p class="info">Каменноостровский пр., 10 · ежедневно с 12:00 до 23:00</p>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>Меню</h2>
+    <p style="max-width:52ch;color:#3f474e">Блюда и цены текстом, чтобы их можно было открыть на телефоне и найти в поиске.</p>
+    <div class="tabs" role="tablist" aria-label="Разделы меню">
+      <button role="tab" aria-selected="true" data-t="z">Закуски</button>
+      <button role="tab" aria-selected="false" data-t="g">Горячее</button>
+      <button role="tab" aria-selected="false" data-t="d">Десерты</button>
+      <button role="tab" aria-selected="false" data-t="n">Напитки</button>
+    </div>
+    <div class="panel on" id="z" role="tabpanel">
+      <div class="item"><b>Тост с брусничным джемом</b><em class="p">420 ₽</em><span>домашний сливочный сыр, укроп</span></div>
+      <div class="item"><b>Солёные грибы</b><em class="p">390 ₽</em><span>со сметаной и луком</span></div>
+      <div class="item"><b>Тартар из сёмги</b><em class="p">690 ₽</em><span>огурец, каперсы, ржаной хлеб</span></div>
+      <div class="item"><b>Салат с печёной свёклой</b><em class="p">480 ₽</em><span>козий сыр, грецкий орех</span></div>
+    </div>
+    <div class="panel" id="g" role="tabpanel">
+      <div class="item"><b>Судак с зелёным соусом</b><em class="p">1 190 ₽</em><span>запечённые овощи</span></div>
+      <div class="item"><b>Утиная грудка</b><em class="p">1 290 ₽</em><span>пюре из сельдерея, соус из клюквы</span></div>
+      <div class="item"><b>Говяжьи щёчки</b><em class="p">1 050 ₽</em><span>томлёные 8 часов, картофельное пюре</span></div>
+      <div class="item"><b>Грибное ризотто</b><em class="p">790 ₽</em><span>можно без мяса</span></div>
+    </div>
+    <div class="panel" id="d" role="tabpanel">
+      <div class="item"><b>Чизкейк с облепихой</b><em class="p">450 ₽</em><span>песочная основа</span></div>
+      <div class="item"><b>Ржаное мороженое</b><em class="p">350 ₽</em><span>карамель, соль</span></div>
+      <div class="item"><b>Яблочный пирог</b><em class="p">420 ₽</em><span>тёплый, с ванильным соусом</span></div>
+    </div>
+    <div class="panel" id="n" role="tabpanel">
+      <div class="item"><b>Морс из брусники</b><em class="p">290 ₽</em><span>кувшин 0,5 л</span></div>
+      <div class="item"><b>Сбитень</b><em class="p">260 ₽</em><span>горячий, с мёдом</span></div>
+      <div class="item"><b>Авторский лимонад</b><em class="p">340 ₽</em><span>сезонный вкус на выбор</span></div>
+      <div class="item"><b>Вино по бокалам</b><em class="p">от 450 ₽</em><span>список у официанта</span></div>
+    </div>
+    <div class="dishes">
+      <img src="assets/dish1.webp" alt="Судак с зелёным соусом и овощами на тёмной тарелке" loading="lazy" width="1000" height="1333">
+      <img src="assets/dish2.webp" alt="Тосты с сыром и брусничным джемом, соленья" loading="lazy" width="1000" height="1333">
+    </div>
+  </div>
+</section>
+
+<section class="happy" id="happy">
+  <img src="assets/bar.webp" alt="Два бокала с коктейлем у барной стойки" loading="lazy" width="1400" height="933">
+  <div class="txt">
+    <h2>Счастливые часы</h2>
+    <p style="max-width:40ch;color:var(--mist)">По будням скидка на напитки и закуски: заходите после работы.</p>
+    <ul class="times">
+      <li><span>Понедельник – четверг</span><b>16:00 – 19:00</b></li>
+      <li><span>Скидка на коктейли и вино</span><b>−20%</b></li>
+      <li><span>Закуски к напиткам</span><b>−15%</b></li>
+    </ul>
+    <a class="btn" href="#bron">Занять место у бара</a>
+  </div>
+</section>
+
+<section class="events" id="afisha">
+  <div class="wrap">
+    <h2>Афиша</h2>
+    <div class="grid">
+      <ul class="afisha">
+        <li><div class="d">24<small>пятница</small></div><div><h3>Вечер живой музыки</h3><p>Джаз-трио, вход свободный, стол лучше занять заранее.</p></div></li>
+        <li><div class="d">01<small>суббота</small></div><div><h3>Ужин шефа</h3><p>Пять блюд сезонного меню, места ограничены.</p></div></li>
+        <li><div class="d">08<small>суббота</small></div><div><h3>Мастер-класс по соленьям</h3><p>Пробуем и готовим вместе с поваром.</p></div></li>
+      </ul>
+      <div>
+        <img src="assets/events.webp" alt="Длинный праздничный стол в отдельном зале" loading="lazy" width="1400" height="933">
+        <p style="margin-top:18px;color:var(--mist)">Банкеты и праздники: отдельный зал на 30 человек. Напишите, и мы предложим меню и смету.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="wrap">
+    <h2>Новости</h2>
+    <div class="cols">
+      <article><time>20 октября</time><h3>Осеннее меню</h3><p>Грибы, тыква и клюква: что поменялось в горячем.</p></article>
+      <article><time>14 октября</time><h3>Скоро в меню: сбитень</h3><p>С мёдом и специями, как зимой в старину.</p></article>
+      <article><time>7 октября</time><h3>Детские выходные</h3><p>По воскресеньям рисуем и лепим пирожки с поваром.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="bron">
+  <div class="wrap cols">
+    <div>
+      <h2>Бронь стола</h2>
+      <form onsubmit="event.preventDefault();document.getElementById('ok').hidden=false">
+        <label>Имя<input name="name" autocomplete="name" required></label>
+        <label>Телефон<input type="tel" name="tel" autocomplete="tel" required></label>
+        <label>Дата и время<input type="datetime-local" name="when" required></label>
+        <label>Сколько человек<select name="n"><option>2</option><option>4</option><option>6</option><option>8 и больше</option></select></label>
+        <button class="btn" type="submit">Забронировать</button>
+        <p class="msg">Подтвердим бронь в мессенджере или по звонку в течение 10 минут.</p>
+        <p class="msg" id="ok" hidden><b>Заявка принята.</b> Это демо, форма ничего не отправляет.</p>
+      </form>
+    </div>
+    <div class="contacts">
+      <h2>Как нас найти</h2>
+      <p style="margin-top:16px">Санкт-Петербург, Каменноостровский пр., 10</p>
+      <p>Метро «Петроградская», 5 минут пешком</p>
+      <p>Ежедневно с 12:00 до 23:00</p>
+      <p style="margin-top:16px"><a class="tel" href="tel:+79000000000">+7 900 000-00-00</a></p>
+      <div class="map">Здесь будет карта с точкой ресторана</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Демо-сайт ресторана. Название, адрес, цены и афиша вымышлены.</span><span>Политика обработки персональных данных</span></div>
+</footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('on')});
+    b.setAttribute('aria-selected','true');
+    document.getElementById(b.dataset.t).classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
